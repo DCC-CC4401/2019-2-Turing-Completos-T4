@@ -35,9 +35,11 @@
           <h2 class="pt-2">LOGO</h2>
         </div>
         <div class="col-8 text-right align-self-center">
-          <form>
+          <form method="post">
+              {% csrf_token %}
+              {{ form }}
             <!--Ingresar nombre de usuario y contraseña-->
-            <input
+            <!--<input
               type="text"
               placeholder="Nombre de usuario"
               style="width: 15em"
@@ -46,7 +48,7 @@
               type="password"
               placeholder="Contraseña"
               style="width: 15em"
-            />
+            />-->
             <!--Boton de iniciar sesion-->
             <button type="submit" class="btn btn-primary btn-sm">
               Iniciar sesión
