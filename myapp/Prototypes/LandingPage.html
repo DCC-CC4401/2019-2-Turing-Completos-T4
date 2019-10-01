@@ -10,19 +10,7 @@
     <link rel="stylesheet" type="text/css" href="css/custom.css">
     <script src="js/clock.js"></script>
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-
-    <script type="text/javascript">
-        $(function chronotimeclock() {
-            $('.showButton').click(function () {
-                $('.hiddenn').show();
-                $('.showclock').hide();
-            });
-            $('.hideButton').click(function () {
-                $('.hiddenn').hide();
-                $('.showclock').show();
-            });
-        });
-    </script>
+    <script src="js/miscfunctions.js"></script>
 </head>
 
 <body>
@@ -78,21 +66,21 @@
     </nav>
     <!--EL RESTO-->
     <div class="container-fluid text-center p-4 main">
-        <div class="row p-2 mx-2 rounded shadow table-success">
-            <div class="col-9 text-left">
-                <h2 class="pt-2">Horario de actividades</h2>
+        <div class="row mx-2 px-2 rounded shadow table-success" style="height:68px;">
+            <div class="col-9 text-left mt-3">
+                <h2>Horario de actividades</h2>
             </div>
-            <button class="showButton col-3 h-100 showclock btn btn-primary h3 my-1" id="buttonclock">Iniciar Actividad
+            <button class="showButton col-3 h-75 showclock btn btn-primary btn-block h3 mt-2" id="buttonclock">
+                Iniciar
+                actividad
                 en tiempo real
             </button>
             <!--RELOJ-->
-            <div class="hiddenn col-2">
-                <div class="card h-100 bg-primary text-white h2 pt-2 " id="chronotime">
-                    0:00:00
-                </div>
+            <div class="card hiddenn col-2 card h-75 bg-primary text-white h1 mt-2 pt-1">
+                0:00:00
             </div>
             <!--botones del reloj-->
-            <div class="hiddenn col-1" id="chronotime2">
+            <div class="hiddenn col-1 h-75 mt-2">
                 <div class="row">
                     <button class="btn btn-sm btn-block btn-success"> Iniciar</button>
                 </div>
