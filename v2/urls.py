@@ -23,7 +23,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.home),
     path('landing_page/', views.landing_page),
-    path('my_profile/', views.my_profile),
+    path('my_profile/', views.my_profile, name='my_profile'),
 ]
 
 urlpatterns += staticfiles_urlpatterns()
