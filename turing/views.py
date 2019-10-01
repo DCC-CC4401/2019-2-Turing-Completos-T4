@@ -1,4 +1,4 @@
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
@@ -13,10 +13,8 @@ def home(request):
             username = form.cleaned_data['username']
             password = form.cleaned_data['password']
             user = authenticate(request, username=username, password=password)
-            print(user)
             if user is not None:
                 login(request, user)
-                print("hola")
                 return HttpResponseRedirect('/landing_page/')
     else:
         form = IniciarSesionForm()
@@ -32,5 +30,6 @@ def my_profile(request):
     return render(request, 'UserProfile.html')
 
 
-
-
+def my_logout(request):
+    logout(request)
+    return HttpResponseRedirect('/')
