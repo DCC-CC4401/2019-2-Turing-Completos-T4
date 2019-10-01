@@ -1,31 +1,72 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block content %}
-
     <div class="wrapper">
+        <!--SIDEBAR-->
+        <nav id="sidebar">
+            <div class="sidebar-header text-center py-5">
+                <h1>LOGO</h1>
+            </div>
+            <div class="text-center py-3">
+                <img src="img/turing.jpg" class="avatar px-2 py-2">
+                <p class="h6">Bienvenido, <br> Nombre de usuario</p>
+            </div>
+            <ul class="list-unstyled components text-left">
+                <li>
+                    <a href="#">Inicio</a>
+                </li>
+                <li>
+                    <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false"
+                       class="dropdown-toggle">Perfil</a>
+                    <ul class="collapse list-unstyled text-left" id="pageSubmenu">
+                        <li>
+                            <a href="../Prototypes/UserProfile.html">Mi Perfil</a>
+                        </li>
+                        <li>
+                            <a href="#">Seguridad</a>
+                        </li>
+                        <li>
+                            <a href="#">Amigos</a>
+                        </li>
+                        <li>
+                            <a href="#">Mis Actividades</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">Otra cosa</a>
+                </li>
+            </ul>
+
+            <ul class="list-unstyled text-center py-4">
+                <button type="button" class="btn btn-danger">Cerrar Sesión</button>
+            </ul>
+        </nav>
         <!--EL RESTO-->
         <div class="container-fluid text-center p-4 main">
-            <div class="row p-2 mx-2 rounded shadow table-success">
-                <div class="col-9 text-left">
-                    <h2 class="pt-2">Horario de actividades</h2>
+            <div class="row mx-2 px-2 rounded shadow table-success" style="height:68px;">
+                <div class="col-9 text-left mt-3">
+                    <h2>Horario de actividades</h2>
                 </div>
-                <button class="showButton col-3 h-100 showclock btn btn-primary h3 my-1" id="buttonclock">Iniciar
-                    Actividad
+                <button class="showButton col-3 h-75 showclock btn btn-primary btn-block h3 mt-2" id="clockButton">
+                    Iniciar
+                    actividad
                     en tiempo real
                 </button>
                 <!--RELOJ-->
-                <div class="hiddenn col-2">
-                    <div class="card h-100 bg-primary text-white h2 pt-2 " id="chronotime">
-                        0:00:00
-                    </div>
+                <div class="card hiddenn col-2 card h-75 bg-dark text-white h2 mt-2 pt-2 font-weight-bold"
+                     id="chronometer"
+                     style="font-family: monospace">
+                    0:00:00
                 </div>
                 <!--botones del reloj-->
-                <div class="hiddenn col-1" id="chronotime2">
+                <div class="hiddenn col-1 h-75 mt-2">
                     <div class="row">
-                        <button class="btn btn-sm btn-block btn-success"> Iniciar</button>
+                        <button class="btn btn-sm btn-block btn-primary" id="startButton"> Iniciar</button>
                     </div>
                     <div class="row">
-                        <button class="hideButton btn btn-sm btn-block btn-danger"> Detener</button>
+                        <button class="hideButton btn btn-sm btn-block btn-danger" id="stopButton"> Detener</button>
                     </div>
                 </div>
             </div>
@@ -607,4 +648,6 @@
             </div>
         </div>
     </div>
+    <script src="{% static "Prototypes/js/clock.js" %}"></script>
+    <script src="{% static "Prototypes/js/miscfunctions.js" %}"></script>
 {% endblock %}
