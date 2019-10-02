@@ -232,7 +232,7 @@ table {
 
 /* Imagen de fondo */
 .bckg {
-  background-image: linear-gradient(#0086b3, #00698c);
+  background-image: linear-gradient(180deg, #1CB5E0 0%, #051f6e 100%);
 }
 
 .headerT {
