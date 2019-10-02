@@ -23,24 +23,33 @@
             <!--botones del reloj-->
             <div class="hiddenn col-1 h-75 mt-2">
                 <div class="row">
-                    <button class="btn btn-sm btn-block btn-primary" id="startButton"> Iniciar</button>
+                    <button class="btn btn-sm btn-block btn-primary" id="startButton" onclick="this.blur();"> Iniciar
+                    </button>
                 </div>
                 <div class="row">
-                    <button class="hideButton btn btn-sm btn-block btn-danger" id="stopButton"> Detener</button>
+                    <button class="hideButton btn btn-sm btn-block btn-danger" id="stopButton" onclick="this.blur();">
+                        Detener
+                    </button>
                 </div>
             </div>
         </div>
         <div class="row pt-4">
             <div class="col-2">
-                <button type="button" class="btn btn-sm btn-success"> << Mes</button>
-                <button type="button" class="btn btn-sm btn-success font-weight-bold"> << Semana</button>
+                <button type="button" class="btn btn-sm btn-success" id="prevMonth" onclick="this.blur();"> << Mes
+                </button>
+                <button type="button" class="btn btn-sm btn-success font-weight-bold" id="prevWeek"
+                        onclick="this.blur();"> << Semana
+                </button>
             </div>
-            <div class="col-8 h3 text-white txt-shdw">
-                Semana del lunes 09 de septiembre, 2019
+            <div class="col-8 h3 text-white txt-shdw" id="week">
+                Semana x
             </div>
             <div class="col-2">
-                <button type="button" class="btn btn-sm btn-success font-weight-bold"> Semana >></button>
-                <button type="button" class="btn btn-sm btn-success"> Mes >></button>
+                <button type="button" class="btn btn-sm btn-success font-weight-bold" id="nextWeek"
+                        onclick="this.blur();"> Semana >>
+                </button>
+                <button type="button" class="btn btn-sm btn-success" id="nextMonth" onclick="this.blur();"> Mes >>
+                </button>
             </div>
         </div>
         <!--HORARIO-->
@@ -135,7 +144,8 @@
         <!--AGREGAR ACTIVIDAD-->
         <div class="row">
             <div class="col-3 pl-4">
-                <button class="btn btn-success btn-block btn-sm" data-toggle="modal" data-target="#addActivity">
+                <button class="btn btn-success btn-block btn-sm " onclick="this.blur();" data-toggle="modal"
+                        data-target="#addActivity">
                     Agregar
                     Actividad
                 </button>
@@ -238,7 +248,7 @@
                 <div class="dropdown show">
                     <a class="btn btn-success btn-sm btn-block dropdown-toggle dropdown-toggle-split mb-3 shadow"
                        href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
-                       aria-expanded="false">
+                       aria-expanded="false" onclick="this.blur();">
                         Filtros por categoría
                     </a>
                     <div class="dropdown-menu dropdown-menu-right px-4 py-3" aria-labelledby="dropdownMenuLink">
@@ -353,4 +363,5 @@
     </div>
     <script src="{% static "Prototypes/js/clock.js" %}"></script>
     <script src="{% static "Prototypes/js/miscfunctions.js" %}"></script>
+    <script src="{% static "Prototypes/js/calendar_controls.js" %}"></script>
 {% endblock %}

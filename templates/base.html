@@ -21,26 +21,6 @@
     <script src="{% static 'Prototypes/js/fullcalendar/daygrid/main.js' %}"></script>
     <script src="{% static 'Prototypes/js/fullcalendar/timegrid/main.js' %}"></script>
     <script src="{% static 'Prototypes/js/fullcalendar/interaction/main.js' %}"></script>
-    <script>
-
-        document.addEventListener('DOMContentLoaded', function () {
-            let calendarEl = document.getElementById('calendar');
-
-            let calendar = new FullCalendar.Calendar(calendarEl, {
-                plugins: ['timeGrid', 'bootstrap', 'dayGrid'],
-                defaultView: 'timeGridWeek',
-                themeSystem: 'bootstrap',
-                allDaySlot: false,
-                nowIndicator: true,
-                locale: 'es',
-                header: false,
-                firstDay : 1
-            });
-
-            calendar.render();
-        });
-
-    </script>
 
 
 </head>
