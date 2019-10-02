@@ -4,9 +4,9 @@
 {% block content %}
 
     <!--EL RESTO-->
-    <div class="container-fluid text-center p-4 main">
-        <div class="row mx-2 px-2 rounded shadow table-success" style="height:68px;">
-            <div class="col-9 text-left mt-3">
+    <div class="container-fluid text-center p-4 main bckg min-vh-100">
+        <div class="row mx-2 px-2 rounded shadow headerT" style="height:68px;">
+            <div class="col-9 text-left mt-3 text-white">
                 <h2>Horario de actividades</h2>
             </div>
             <button class="showButton col-3 h-75 showclock btn btn-primary btn-block h3 mt-2" id="clockButton">
@@ -15,7 +15,7 @@
                 en tiempo real
             </button>
             <!--RELOJ-->
-            <div class="card hiddenn col-2 card h-75 bg-dark text-white h2 mt-2 pt-2 font-weight-bold"
+            <div class="card hiddenn col-2 card h-75 bg-gradient-light text-dark sdw-b h2 mt-2 pt-2 font-weight-bold"
                  id="chronometer"
                  style="font-family: monospace">
                 0:00:00
@@ -35,7 +35,7 @@
                 <button type="button" class="btn btn-sm btn-success"> << Mes</button>
                 <button type="button" class="btn btn-sm btn-success font-weight-bold"> << Semana</button>
             </div>
-            <div class="col-8 h3">
+            <div class="col-8 h3 text-white">
                 Semana del lunes 09 de septiembre, 2019
             </div>
             <div class="col-2">
@@ -44,265 +44,8 @@
             </div>
         </div>
         <!--HORARIO-->
-        <div class="row ml-1 scroll-horario shadow">
-            <table class="table table-bordered table-sm text-center ">
-                <thead class="thead-dark table-head-sticky">
-                <tr>
-                    <th>Hora<br></th>
-                    <th>Lunes</th>
-                    <th>Martes</th>
-                    <th>Miércoles</th>
-                    <th>Jueves</th>
-                    <th>Viernes</th>
-                    <th>Sábado</th>
-                    <th>Domingo</th>
-                </tr>
-                </thead>
-                <tr>
-                    <td>00:00</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td class="table-primary">Dormir</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>01:00</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td class="table-primary">Dormir</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>02:00</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td class="table-primary">Dormir</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>03:00</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td class="table-primary">Dormir</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>04:00</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td class="table-primary">Dormir</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>05:00</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td class="table-primary">Dormir</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>06:00</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td class="table-primary">Dormir</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>07:00</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>08:00<br></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>09:00</td>
-                    <td></td>
-                    <td class="table-info">Estudiar</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>10:00</td>
-                    <td></td>
-                    <td class="table-info">Estudiar</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td class="table-success">Reunión familiar</td>
-                </tr>
-                <tr>
-                    <td>11:00</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>12:00</td>
-                    <td></td>
-                    <td></td>
-                    <td class="table-danger ">
-                        <button class="btn btn-sm btn-block" data-toggle="modal" data-target="#Activity"> Ida
-                            Universidad
-                        </button>
-                    </td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>13:00</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td class="table-primary">Jugar PC</td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>14:00</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td class="table-primary">Jugar PC</td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>15:00</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>16:00</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>17:00</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td class="table-warning">Ir al cine</td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>18:00</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td class="table-warning">Ir al cine</td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>19:00</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>20:00</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>21:00</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>22:00</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>23:00</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-            </table>
+        <div class="row ml-1 scroll-horario shadow bg-white">
+            <div id="calendar"></div>
             <!--MODAL FICHA-->
             <div class="modal fade" id="Activity" tabindex="-1" role="dialog"
                  aria-labelledby="exampleModalCenterTitle"
@@ -523,7 +266,7 @@
         <div class="row">
             <div class="col">
                 <div>
-                    <p class="h5 text-dark">Datos semanales</p>
+                    <p class="h5 text-white">Datos semanales</p>
                 </div>
                 <!--SEMANALES-->
                 <table class="table table-bordered table-sm shadow">
@@ -565,7 +308,7 @@
             </div>
             <div class="col">
                 <div>
-                    <p class="h5 text-dark">Datos de amigos</p>
+                    <p class="h5 text-white">Datos de amigos</p>
                 </div>
                 <!--AMIGOS-->
                 <table class="table table-bordered table-sm shadow">

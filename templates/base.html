@@ -11,6 +11,32 @@
     <link rel="stylesheet" href="{% static 'Prototypes/css/bootstrap.min.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'Prototypes/css/custom.css' %}">
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <!-- Full Calendar-->
+    <link rel="stylesheet" href="{% static 'Prototypes/js/fullcalendar/core/main.css' %}">
+    <link rel="stylesheet" href="{% static 'Prototypes/js/fullcalendar/bootstrap/main.css' %}">
+    <link rel="stylesheet" href="{% static 'Prototypes/js/fullcalendar/timegrid/main.css' %}">
+    <link rel="stylesheet" href="{% static 'Prototypes/js/fullcalendar/daygrid/main.css' %}">
+    <script src="{% static 'Prototypes/js/fullcalendar/core/main.js' %}"></script>
+    <script src="{% static 'Prototypes/js/fullcalendar/bootstrap/main.js' %}"></script>
+    <script src="{% static 'Prototypes/js/fullcalendar/timegrid/main.js' %}"></script>
+    <script src="{% static 'Prototypes/js/fullcalendar/daygrid/main.js' %}"></script>
+    <script src="{% static 'Prototypes/js/fullcalendar/interaction/main.js' %}"></script>
+    <script>
+
+        document.addEventListener('DOMContentLoaded', function () {
+            let calendarEl = document.getElementById('calendar');
+
+            let calendar = new FullCalendar.Calendar(calendarEl, {
+                plugins: ['timeGrid', 'bootstrap', 'dayGrid'],
+                defaultView: 'dayGridWeek',
+                themeSystem: 'bootstrap'
+
+            });
+
+            calendar.render();
+        });
+
+    </script>
 
 
 </head>
@@ -63,7 +89,9 @@
         </ul>
 
         <ul class="list-unstyled text-center py-4">
-            <a href="{% url 'logout' %}"><button type="submit" class="btn btn-danger">Cerrar Sesión</button></a>
+            <a href="{% url 'logout' %}">
+                <button type="submit" class="btn btn-danger">Cerrar Sesión</button>
+            </a>
         </ul>
     </nav>
     {% block content %}

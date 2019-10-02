@@ -12,6 +12,8 @@ startButton.addEventListener("click", function () {
         startButton.textContent = "Pausar";
         startButton.classList.remove("btn-info", "btn-warning", "btn-success");
         startButton.classList.add("btn-success");
+        chronometer.classList.remove("sdw-b", "sdw-g", "sdw-y");
+        chronometer.classList.add("sdw-g");
         sButtonState = 1;
         date = new Date;
         startChronometer();
@@ -19,6 +21,8 @@ startButton.addEventListener("click", function () {
         startButton.textContent = "Reanudar";
         startButton.classList.remove("btn-info", "btn-warning", "btn-success");
         startButton.classList.add("btn-warning");
+        chronometer.classList.remove("sdw-b", "sdw-g", "sdw-y");
+        chronometer.classList.add("sdw-y");
         sButtonState = 0;
         pauseTime = (new Date) - date;
         pauseChronometer();
@@ -30,6 +34,8 @@ stopButton.addEventListener("click", function () {
     startButton.textContent = "Iniciar";
     startButton.classList.remove("btn-info", "btn-warning", "btn-success");
     startButton.classList.add("btn-primary");
+    chronometer.classList.remove("sdw-b", "sdw-g", "sdw-y");
+    chronometer.classList.add("sdw-b");
     restartChronometer();
     pauseChronometer();
 });
