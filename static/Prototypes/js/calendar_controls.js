@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', function () {
         locale: 'es',
         header: false,
         firstDay: 1,
-        columnHeaderFormat: {weekday: 'short', month: 'numeric', day: 'numeric', omitCommas: true},
+        columnHeaderFormat: {weekday: 'long'},
         slotLabelFormat: {
             hour: '2-digit',
             minute: '2-digit'
