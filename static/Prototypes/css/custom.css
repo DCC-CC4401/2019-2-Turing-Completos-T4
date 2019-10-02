@@ -232,7 +232,7 @@ table {
 
 /* Imagen de fondo */
 .bckg {
-  background-image: linear-gradient(to bottom, #0041a4, #003a0f);
+  background-image: linear-gradient(#0086b3, #00698c);
 }
 
 .headerT {
@@ -257,4 +257,8 @@ table {
     -webkit-box-shadow: inset 0 0 10px #000;
     -moz-box-shadow: inset 0 0 10px #000;
     box-shadow: inset 0 0 15px #cb9200;
+}
+
+.txt-shdw {
+  text-shadow: 2px 2px 4px #000000;
 }
