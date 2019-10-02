@@ -14,12 +14,12 @@
     <!-- Full Calendar-->
     <link rel="stylesheet" href="{% static 'Prototypes/js/fullcalendar/core/main.css' %}">
     <link rel="stylesheet" href="{% static 'Prototypes/js/fullcalendar/bootstrap/main.css' %}">
-    <link rel="stylesheet" href="{% static 'Prototypes/js/fullcalendar/timegrid/main.css' %}">
     <link rel="stylesheet" href="{% static 'Prototypes/js/fullcalendar/daygrid/main.css' %}">
+    <link rel="stylesheet" href="{% static 'Prototypes/js/fullcalendar/timegrid/main.css' %}">
     <script src="{% static 'Prototypes/js/fullcalendar/core/main.js' %}"></script>
     <script src="{% static 'Prototypes/js/fullcalendar/bootstrap/main.js' %}"></script>
-    <script src="{% static 'Prototypes/js/fullcalendar/timegrid/main.js' %}"></script>
     <script src="{% static 'Prototypes/js/fullcalendar/daygrid/main.js' %}"></script>
+    <script src="{% static 'Prototypes/js/fullcalendar/timegrid/main.js' %}"></script>
     <script src="{% static 'Prototypes/js/fullcalendar/interaction/main.js' %}"></script>
     <script>
 
@@ -28,9 +28,13 @@
 
             let calendar = new FullCalendar.Calendar(calendarEl, {
                 plugins: ['timeGrid', 'bootstrap', 'dayGrid'],
-                defaultView: 'dayGridWeek',
-                themeSystem: 'bootstrap'
-
+                defaultView: 'timeGridWeek',
+                themeSystem: 'bootstrap',
+                allDaySlot: false,
+                nowIndicator: true,
+                locale: 'es',
+                header: false,
+                firstDay : 1
             });
 
             calendar.render();
