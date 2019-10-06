@@ -17,7 +17,7 @@ def home(request):
                 login(request, user)
                 return HttpResponseRedirect('/landing_page/')
             else:
-                return render_to_response('LandingPageNotLogged.html', {'invalid': True, 'form': form})
+                return render(request, 'LandingPageNotLogged.html', {'invalid': True, 'form': form})
     else:
         form = IniciarSesionForm()
     return render(request, 'LandingPageNotLogged.html', {'form': form})
