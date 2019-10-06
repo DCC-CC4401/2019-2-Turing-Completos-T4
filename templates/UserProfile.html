@@ -1,18 +1,16 @@
 {% extends 'base.html' %}
-{% load staticfiles %}
+{% load static %}
 {% block content %}
 
-<div class="wrapper">
-
     <!--CONTENIDO PAGINA-->
-    <div class="container-fluid p-4 main">
+    <div class="container-fluid p-4 main bckg min-vh-100">
         <div class="row">
             <img src="{% static 'Prototypes/img/turing.jpg' %}" class="circular mx-auto d-block shadow"
                  height="250px" alt="turing">
         </div>
         <div class="row py-4">
             <div class="col text-center">
-                <p class="h4 text-center text-dark">Nombre de usuario</p>
+                <p class="h4 text-center text-white txt-shdw">Nombre de usuario</p>
                 <button type="button" class="btn btn-success">Cambiar imagen</button>
             </div>
         </div>
@@ -21,7 +19,7 @@
 
         <!--PESTAÑAS-->
         <div class="row px-5">
-            <div class="col offset-sm-2 col-sm-8">
+            <div class="col offset-sm-2 col-sm-8 bg-light rounded-top shadow">
                 <ul class="nav nav-tabs" id="pestañas-perfil-de-usuario" role="tablist">
                     <li class="nav-item">
                         <a class="nav-link nav-link-fix active" id="profile-tab-mi-perfil" data-toggle="tab"
@@ -47,7 +45,7 @@
 
         <!--CONTENIDO DE LAS PESTAÑAS-->
         <div class="row px-5">
-            <div class="tab-content p-4 offset-sm-2 col-sm-8" id="myTabContent">
+            <div class="tab-content p-4 offset-sm-2 col-sm-8 bg-light rounded-bottom shadow" id="myTabContent">
 
                 <!--PESTAÑA MI PERFIL-->
                 <div class="tab-pane fade show active" id="Perfil" role="tabpanel" aria-labelledby="Perfil-tab">
@@ -265,7 +263,7 @@
 
                     <div class="card spaced">
                         <div class="card-body sleep-activity text-white">
-                            <img src="{% static 'Prototypes/img/bed.png'%}" class="activity-icon invert-color mx-2">
+                            <img src="{% static 'Prototypes/img/bed.png' %}" class="activity-icon invert-color mx-2">
                             Dormir
                             <button type="button" class="btn btn-sm btn-primary float-right"> Ver info</button>
                         </div>
@@ -273,7 +271,7 @@
 
                     <div class="card spaced">
                         <div class="card-body study-activity text-white">
-                            <img src="{% static 'Prototypes/img/open-book.png'%}"
+                            <img src="{% static 'Prototypes/img/open-book.png' %}"
                                  class="activity-icon invert-color mx-2">
                             Estudiar
                             <button type="button" class="btn btn-sm btn-primary float-right"> Ver info</button>
@@ -282,7 +280,7 @@
 
                     <div class="card spaced">
                         <div class="card-body eat-activity text-white">
-                            <img src="{% static 'Prototypes/img/crossed-knife-and-fork.png'%}"
+                            <img src="{% static 'Prototypes/img/crossed-knife-and-fork.png' %}"
                                  class="activity-icon invert-color mx-2"> Almorzar
                             <button type="button" class="btn btn-sm btn-primary float-right"> Ver info</button>
                         </div>
@@ -290,7 +288,7 @@
 
                     <div class="card spaced">
                         <div class="card-body house-activity text-white">
-                            <img src="{% static 'Prototypes/img/washing-machine.png'%}"
+                            <img src="{% static 'Prototypes/img/washing-machine.png' %}"
                                  class="activity-icon invert-color mx-2">
                             Lavar ropa
                             <button type="button" class="btn btn-sm btn-primary float-right"> Ver info</button>
@@ -299,7 +297,7 @@
 
                     <div class="card spaced">
                         <div class="card-body animal-activity text-white">
-                            <img src="{% static 'Prototypes/img/snowshoe-cat.png'%}"
+                            <img src="{% static 'Prototypes/img/snowshoe-cat.png' %}"
                                  class="activity-icon invert-color mx-2">
                             Jugar con el Michi
                             <button type="button" class="btn btn-sm btn-primary float-right"> Ver info</button>

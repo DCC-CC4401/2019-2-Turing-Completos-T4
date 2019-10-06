@@ -4,85 +4,102 @@
 <head>
     <meta charset="UTF-8"/>
     <meta
-            content="width=device-width, initial-scale=1, shrink-to-fit=no"
             name="viewport"
+            content="width=device-width, initial-scale=1, shrink-to-fit=no"
     />
     <title>Página de Inicio</title>
     <!-- BOOTSTRAP CSS, DO NOT DELETE -->
-    <link href="{% static 'Prototypes/css/bootstrap.min.css' %}" rel="stylesheet"/>
-    <link href="{% static 'Prototypes/css/custom.css' %}" rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" href="{% static 'Prototypes/css/bootstrap.min.css' %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'Prototypes/css/custom.css' %}"/>
     <script src="https://code.jquer statiy.com/jquery-3.2.1.min.js"></script>
 </head>
 
-<body>
+<body class="bckg min-vh-100" >
 <!-- BOOTSTRAP JS, DO NOT DELETE -->
 <script
-        crossorigin="anonymous"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"
 ></script>
 <script
-        crossorigin="anonymous"
-        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
         src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"
 ></script>
 <script src="{% static 'Prototypes/js/bootstrap.min.js' %}"></script>
 
 <!--Barra de login-->
 <div class="container-fluid text-center p-4">
-    <div class="row p-2 mx-2 rounded shadow table-success">
-        <div class="col-4 text-left">
+    <div class="row p-2 mx-2 rounded shadow headerT ">
+        <div class="col-4 text-left text-white">
             <h2 class="pt-2">LOGO</h2>
         </div>
-        <div class="col-8 text-right align-self-center">
-            <form>
+        <div class="col-8 text-right align-self-center text-white">
+            <form method="post">
+                {% csrf_token %}
                 <!--Ingresar nombre de usuario y contraseña-->
-                <input
-                        placeholder="Nombre de usuario"
-                        style="width: 15em"
-                        type="text"
-                />
-                <input
-                        placeholder="Contraseña"
-                        style="width: 15em"
-                        type="password"
-                />
+                {{ form }}
                 <!--Boton de iniciar sesion-->
-                <button class="btn btn-primary btn-sm" type="submit">
+                <button type="submit" class="btn btn-primary ml-2">
                     Iniciar sesión
                 </button>
             </form>
+            {% if invalid %}
+                Nombre de usuario y/o contraseña inválida.
+            {% endif %}
         </div>
     </div>
 </div>
 <!--Información de la página-->
 <div class="container-fluid text-left p-4">
-    <div class="col-6 p-2 mx-2 rounded shadow table-success">
+<div class="col-6 p-2 mx-2 rounded shadow table-success">
         Había una vez un percebe feo.
         <br/>Era tan feo que todos se murieron. <br/>Fin.
     </div>
 </div>
 <!--Registro de usuario-->
-<div class="container-fluid text-right col-10">
-    <h2>¿No tienes cuenta? ¡Regístrate!</h2>
+<div class="container-fluid text-right col-md-11 ml-3 text-white">
+            <h3>¿No tienes cuenta? ¡Regístrate!</h3>
+    </div>
+<div class="row">
+<div class="col-8"></div>
+
+<div class="card col-3">
     <form>
-        <div class="form-group">
-            <input name="name" placeholder="Nombre" type="text"/>
+        <div class="form-group text-right">
+            <input type="text" name="name" placeholder="Nombre" class="form-control"/>
         </div>
         <div class="form-group">
-            <input name="surname" placeholder="Apellido" type="text"/>
+            <input type="text" name="surname" placeholder="Apellido" class="form-control"/>
         </div>
         <div class="form-group">
-            <input name="email" placeholder="Correo electrónico" type="email"/>
+            <input type="email" name="email" placeholder="Correo electrónico" class="form-control"/>
         </div>
         <div class="form-group">
-            <input name="avatar" type="file">
+            <input type="password" name="password" placeholder="Contraseña" class="form-control"/>
         </div>
         <div class="form-group">
-            <input name="password" placeholder="Contraseña" type="password"/>
+            <input type="password" name="password2" placeholder="Confirme contraseña" class="form-control"/>
         </div>
-        <button class="btn btn-primary" type="submit">Registrarse</button>
-    </form>
+        <div class="form-group text-black">
+            <label >
+                Seleccione imagen.
+            </label>
+            <input type="file" name="avatar" class="form-control-file" >
+        </div>
+
+        <div class="row">
+            <div class="col-7"></div>
+            <div class="col-1">
+                <button type="submit" class="btn btn-primary m-2 flex-row" >Registrarse</button>
+            </div>
+        </div>    </form>
 </div>
+
+    </div>
+
+
+
+
 </body>
 </html>

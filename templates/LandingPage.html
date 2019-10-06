@@ -2,51 +2,11 @@
 {% load static %}
 
 {% block content %}
-<div class="wrapper">
-    <!--SIDEBAR-->
-    <nav id="sidebar">
-        <div class="sidebar-header text-center py-5">
-            <h1>LOGO</h1>
-        </div>
-        <div class="text-center py-3">
-            <img src="img/turing.jpg" class="avatar px-2 py-2">
-            <p class="h6">Bienvenido, <br> Nombre de usuario</p>
-        </div>
-        <ul class="list-unstyled components text-left">
-            <li>
-                <a href="#">Inicio</a>
-            </li>
-            <li>
-                <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false"
-                   class="dropdown-toggle">Perfil</a>
-                <ul class="collapse list-unstyled text-left" id="pageSubmenu">
-                    <li>
-                        <a href="../Prototypes/UserProfile.html">Mi Perfil</a>
-                    </li>
-                    <li>
-                        <a href="#">Seguridad</a>
-                    </li>
-                    <li>
-                        <a href="#">Amigos</a>
-                    </li>
-                    <li>
-                        <a href="#">Mis Actividades</a>
-                    </li>
-                </ul>
-            </li>
-            <li>
-                <a href="#">Otra cosa</a>
-            </li>
-        </ul>
 
-        <ul class="list-unstyled text-center py-4">
-            <button type="button" class="btn btn-danger">Cerrar Sesión</button>
-        </ul>
-    </nav>
     <!--EL RESTO-->
-    <div class="container-fluid text-center p-4 main">
-        <div class="row mx-2 px-2 rounded shadow table-success" style="height:68px;">
-            <div class="col-9 text-left mt-3">
+    <div class="container-fluid text-center p-4 main bckg min-vh-100">
+        <div class="row mx-2 px-2 rounded shadow headerT clearfix" style="height:68px;">
+            <div class="col-9 text-left mt-3 text-white">
                 <h2>Horario de actividades</h2>
             </div>
             <button class="showButton col-3 h-75 showclock btn btn-primary btn-block h3 mt-2" id="clockButton">
@@ -55,7 +15,7 @@
                 en tiempo real
             </button>
             <!--RELOJ-->
-            <div class="card hiddenn col-2 card h-75 bg-dark text-white h2 mt-2 pt-2 font-weight-bold"
+            <div class="card hiddenn col-2 card h-75 bg-gradient-light text-dark sdw-b h2 mt-2 pt-2 font-weight-bold"
                  id="chronometer"
                  style="font-family: monospace">
                 0:00:00
@@ -63,286 +23,38 @@
             <!--botones del reloj-->
             <div class="hiddenn col-1 h-75 mt-2">
                 <div class="row">
-                    <button class="btn btn-sm btn-block btn-primary" id="startButton"> Iniciar</button>
+                    <button class="btn btn-sm btn-block btn-primary" id="startButton" onclick="this.blur();"> Iniciar
+                    </button>
                 </div>
                 <div class="row">
-                    <button class="hideButton btn btn-sm btn-block btn-danger" id="stopButton"> Detener</button>
+                    <button class="hideButton btn btn-sm btn-block btn-danger" id="stopButton" onclick="this.blur();">
+                        Detener
+                    </button>
                 </div>
             </div>
         </div>
         <div class="row pt-4">
             <div class="col-2">
-                <button type="button" class="btn btn-sm btn-success"> << Mes</button>
-                <button type="button" class="btn btn-sm btn-success font-weight-bold"> << Semana</button>
+                <button type="button" class="btn btn-sm btn-success" id="prevMonth" onclick="this.blur();"> << Mes
+                </button>
+                <button type="button" class="btn btn-sm btn-success font-weight-bold" id="prevWeek"
+                        onclick="this.blur();"> << Semana
+                </button>
             </div>
-            <div class="col-8 h3">
-                Semana del lunes 09 de septiembre, 2019
+            <div class="col-8 h3 text-white txt-shdw" id="week">
+                Semana x
             </div>
             <div class="col-2">
-                <button type="button" class="btn btn-sm btn-success font-weight-bold"> Semana >></button>
-                <button type="button" class="btn btn-sm btn-success"> Mes >></button>
+                <button type="button" class="btn btn-sm btn-success font-weight-bold" id="nextWeek"
+                        onclick="this.blur();"> Semana >>
+                </button>
+                <button type="button" class="btn btn-sm btn-success" id="nextMonth" onclick="this.blur();"> Mes >>
+                </button>
             </div>
         </div>
         <!--HORARIO-->
-        <div class="row ml-1 scroll-horario shadow">
-            <table class="table table-bordered table-sm text-center ">
-                <thead class="thead-dark table-head-sticky">
-                <tr>
-                    <th>Hora<br></th>
-                    <th>Lunes</th>
-                    <th>Martes</th>
-                    <th>Miércoles</th>
-                    <th>Jueves</th>
-                    <th>Viernes</th>
-                    <th>Sábado</th>
-                    <th>Domingo</th>
-                </tr>
-                </thead>
-                <tr>
-                    <td>00:00</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td class="table-primary">Dormir</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>01:00</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td class="table-primary">Dormir</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>02:00</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td class="table-primary">Dormir</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>03:00</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td class="table-primary">Dormir</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>04:00</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td class="table-primary">Dormir</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>05:00</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td class="table-primary">Dormir</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>06:00</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td class="table-primary">Dormir</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>07:00</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>08:00<br></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>09:00</td>
-                    <td></td>
-                    <td class="table-info">Estudiar</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>10:00</td>
-                    <td></td>
-                    <td class="table-info">Estudiar</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td class="table-success">Reunión familiar</td>
-                </tr>
-                <tr>
-                    <td>11:00</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>12:00</td>
-                    <td></td>
-                    <td></td>
-                    <td class="table-danger ">
-                        <button class="btn btn-sm btn-block" data-toggle="modal" data-target="#Activity"> Ida
-                            Universidad
-                        </button>
-                    </td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>13:00</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td class="table-primary">Jugar PC</td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>14:00</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td class="table-primary">Jugar PC</td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>15:00</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>16:00</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>17:00</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td class="table-warning">Ir al cine</td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>18:00</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td class="table-warning">Ir al cine</td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>19:00</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>20:00</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>21:00</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>22:00</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>23:00</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-            </table>
+        <div class="row ml-1 scroll-horario shadow bg-white rounded">
+            <div id="calendar"></div>
             <!--MODAL FICHA-->
             <div class="modal fade" id="Activity" tabindex="-1" role="dialog"
                  aria-labelledby="exampleModalCenterTitle"
@@ -432,7 +144,8 @@
         <!--AGREGAR ACTIVIDAD-->
         <div class="row">
             <div class="col-3 pl-4">
-                <button class="btn btn-success btn-block btn-sm" data-toggle="modal" data-target="#addActivity">
+                <button class="btn btn-success btn-block btn-sm " onclick="this.blur();" data-toggle="modal"
+                        data-target="#addActivity">
                     Agregar
                     Actividad
                 </button>
@@ -535,7 +248,7 @@
                 <div class="dropdown show">
                     <a class="btn btn-success btn-sm btn-block dropdown-toggle dropdown-toggle-split mb-3 shadow"
                        href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
-                       aria-expanded="false">
+                       aria-expanded="false" onclick="this.blur();">
                         Filtros por categoría
                     </a>
                     <div class="dropdown-menu dropdown-menu-right px-4 py-3" aria-labelledby="dropdownMenuLink">
@@ -563,7 +276,7 @@
         <div class="row">
             <div class="col">
                 <div>
-                    <p class="h5 text-dark">Datos semanales</p>
+                    <p class="h5 text-white txt-shdw">Datos semanales</p>
                 </div>
                 <!--SEMANALES-->
                 <table class="table table-bordered table-sm shadow">
@@ -605,7 +318,7 @@
             </div>
             <div class="col">
                 <div>
-                    <p class="h5 text-dark">Datos de amigos</p>
+                    <p class="h5 text-white txt-shdw">Datos de amigos</p>
                 </div>
                 <!--AMIGOS-->
                 <table class="table table-bordered table-sm shadow">
@@ -647,11 +360,8 @@
             </div>
         </div>
     </div>
-</div>
-<script src="{% static " Prototypes/js/clock.js" %}"></script>
-<
-script
-src = "{% static "
-Prototypes / js / miscfunctions.js
-" %}" ></script>
+    </div>
+    <script src="{% static "Prototypes/js/clock.js" %}"></script>
+    <script src="{% static "Prototypes/js/miscfunctions.js" %}"></script>
+    <script src="{% static "Prototypes/js/calendar_controls.js" %}"></script>
 {% endblock %}
