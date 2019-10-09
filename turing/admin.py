@@ -1,9 +1,9 @@
 from django.contrib import admin
-from turing.models import UsuarioConRoll, Amigos, Actividades, CreacionActividad
+from turing.models import UserProfile, Amigos, Actividades, CreacionActividad
 # Register your models here.
 
 
-admin.site.register(UsuarioConRoll)
+admin.site.register(UserProfile)
 admin.site.register(Amigos)
 admin.site.register(Actividades)
 admin.site.register(CreacionActividad)
