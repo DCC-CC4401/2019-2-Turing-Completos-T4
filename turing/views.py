@@ -32,7 +32,8 @@ def landing_page(request):
 
 
 @login_required
-def change_password(request):
+def change_password(request, context={}):
+    form = CambiarContrasena()
     if request.method == 'POST':
         form = CambiarContrasena(request.POST)
         if form.is_valid():
@@ -44,22 +45,22 @@ def change_password(request):
             if user is not None and new == confirm:
                 user.set_password(new)
                 user.save()
-                # TODO: hacer que me redirija bien y no que tire 404
-                return HttpResponseRedirect(reverse('my_profile'))
+                messages.success(request, 'Su contraseña ha sido cambiada exitosamente.')
             else:
-                return render(request, 'UserProfile.html', {'change_form': form, 'wrong_old': True})
-    else:
-        form = CambiarContrasena()
-    return render(request, 'UserProfile.html', {'form': form})
+                messages.warning(request, 'Las contraseñas no coinciden, por favor intente de nuevo.')
+        else:
+            messages.error(request, 'Hubo error en el cambio de contraseña, por favor intente de nuevo.')
+    context.update({'form': form})
+    return request, context
 
 
 def my_profile(request):
-    change_password(request)
     try:
         img = 'media/' + UserProfile.objects.get(user=get_user(request)).image.url
     except UserProfile.DoesNotExist:
         img = 'Prototypes/img/default-user-image.png'
-    return render(request, 'UserProfile.html', context={'img': img})
+    (req, cont) = change_password(request, context={'img': img})
+    return render(req, 'UserProfile.html', cont)
 
 
 def my_logout(request):
