@@ -1,5 +1,7 @@
 from django.contrib import admin
+
 from turing.models import UserProfile, Amigos, Actividades, CreacionActividad
+
 # Register your models here.
 
 

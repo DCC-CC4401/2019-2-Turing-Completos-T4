@@ -5,7 +5,7 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.urls import reverse
 
-from .forms import ImageUploadForm, IniciarSesionForm
+from .forms import IniciarSesionForm, ImageUploadForm, CambiarContrasena
 from .models import UserProfile
 
 
@@ -31,12 +31,36 @@ def landing_page(request):
     return render(request, 'LandingPage.html')
 
 
+@login_required
+def change_password(request, context={}):
+    form = CambiarContrasena()
+    if request.method == 'POST':
+        form = CambiarContrasena(request.POST)
+        if form.is_valid():
+            new = form.cleaned_data['new_pass']
+            confirm = form.cleaned_data['confirm_pass']
+            username = request.user.username
+            password = form.cleaned_data['old_pass']
+            user = authenticate(request, username=username, password=password)
+            if user is not None and new == confirm:
+                user.set_password(new)
+                user.save()
+                messages.success(request, 'Su contraseña ha sido cambiada exitosamente.')
+            else:
+                messages.warning(request, 'Las contraseñas no coinciden, por favor intente de nuevo.')
+        else:
+            messages.error(request, 'Hubo error en el cambio de contraseña, por favor intente de nuevo.')
+    context.update({'form': form})
+    return request, context
+
+
 def my_profile(request):
     try:
         img = 'media/' + UserProfile.objects.get(user=get_user(request)).image.url
     except UserProfile.DoesNotExist:
         img = 'Prototypes/img/default-user-image.png'
-    return render(request, 'UserProfile.html', context={'img': img})
+    (req, cont) = change_password(request, context={'img': img})
+    return render(req, 'UserProfile.html', cont)
 
 
 def my_logout(request):

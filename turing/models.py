@@ -10,8 +10,11 @@ def get_filename(instance, filename):
     name = 'user_images/' + str(instance.user.id)
     extension = '.' + filename.split('.')[-1]
     fullname = path.join(settings.MEDIA_ROOT, name)
-    if path.exists(fullname):
-        remove(fullname)
+    # TODO: Checkear todas las extensiones de imagen con el fullname
+    img_extensions = ['.png', '.jpg', '.jpeg', '.svg']
+    for ext in img_extensions:
+        if path.exists(fullname + ext):
+            remove(fullname + ext)
     return name + extension
 
 

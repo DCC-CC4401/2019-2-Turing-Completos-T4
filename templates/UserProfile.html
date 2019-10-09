@@ -7,7 +7,7 @@
 
         <div class="row">
             <img src="{% static img %}" class="circular mx-auto d-block shadow"
-                 height="250px" alt="turing">
+                 height="250px" width="250px" alt="turing">
         </div>
 
         <div class="row py-4">
@@ -53,7 +53,6 @@
         <!--CONTENIDO DE LAS PESTAÑAS-->
         <div class="row px-5">
             <div class="tab-content p-4 offset-sm-2 col-sm-8 bg-light rounded-bottom shadow" id="myTabContent">
-
                 <!--PESTAÑA MI PERFIL-->
                 <div class="tab-pane fade show active" id="Perfil" role="tabpanel" aria-labelledby="Perfil-tab">
                     <form>
@@ -90,32 +89,34 @@
                 <!--PESTAÑA SEGURIDAD-->
                 <div class="tab-pane fade show disabled" id="Seguridad" role="tabpanel"
                      aria-labelledby="Seguridad-tab">
-                    <form>
+                    <form method="post">
+                        {% csrf_token %}
+                        {{ form }}
                         <!--Contraseña actual-->
-                        <fieldset disabled>
-                            <div class="form-group">
-                                <label for="disabledTextInput">Contraseña actual:</label>
-                                <input type="text" id="disabledTextInputContraseñaActual" class="form-control"
-                                       placeholder="************">
-                            </div>
-                        </fieldset>
+                        <!--
+                                                <div class="form-group">
+                                                    <label for="disabledTextInput">Contraseña actual:</label>
+                                                    <input type="text" id="disabledTextInputContraseñaActual" class="form-control"
+                                                           placeholder="************">
+                                                </div>
 
-                        <!--Contraseña nueva-->
-                        <div class="form-group">
-                            <label for="exampleInputEmail1">Nueva Contraseña</label>
-                            <input type="email" class="form-control" id="exampleInputEmail1"
-                                   aria-describedby="emailHelp" placeholder="Nueva Contraseña">
-                        </div>
 
-                        <!--Contraseña confirmacion-->
-                        <div class="form-group">
-                            <label for="exampleInputEmail1">Confirmación Contraseña</label>
-                            <input type="email" class="form-control" id="Pass-conf" aria-describedby="emailHelp"
-                                   placeholder="Confirmación Contraseña">
-                        </div>
+                                                Contraseña nueva
+                                                <div class="form-group">
+                                                    <label for="exampleInputEmail1">Nueva Contraseña</label>
+                                                    <input type="email" class="form-control" id="exampleInputEmail1"
+                                                           aria-describedby="emailHelp" placeholder="Nueva Contraseña">
+                                                </div>
 
+                                                Contraseña confirmacion
+                                                <div class="form-group">
+                                                    <label for="exampleInputEmail1">Confirmación Contraseña</label>
+                                                    <input type="email" class="form-control" id="Pass-conf" aria-describedby="emailHelp"
+                                                           placeholder="Confirmación Contraseña">
+                                                </div>
+                        -->
+                        <button type="submit" class="btn btn-success">Cambiar contraseña</button>
                     </form>
-                    <button type="submit" class="btn btn-success">Cambiar contraseña</button>
                 </div>
 
                 <!--PESTAÑA AMIGOS-->
