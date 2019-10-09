@@ -1,5 +1,4 @@
 from django import forms
-from .models import *
 
 
 class IniciarSesionForm(forms.Form):
@@ -16,3 +15,7 @@ class CambiarContrasena(forms.Form):
         attrs={'class': 'form_control', 'size': '30em', 'placeholder': "***********"}))
     confirm_pass = forms.CharField(label='Confirmar contraseña', widget=forms.PasswordInput(
         attrs={'class': 'form_control', 'size': '30em', 'placeholder': "***********"}))
+
+
+class ImageUploadForm(forms.Form):
+    image = forms.ImageField()

@@ -4,14 +4,21 @@
 
     <!--CONTENIDO PAGINA-->
     <div class="container-fluid p-4 main bckg min-vh-100">
+
         <div class="row">
-            <img src="{% static 'Prototypes/img/turing.jpg' %}" class="circular mx-auto d-block shadow"
+            <img src="{% static img %}" class="circular mx-auto d-block shadow"
                  height="250px" alt="turing">
         </div>
+
         <div class="row py-4">
             <div class="col text-center">
                 <p class="h4 text-center text-white txt-shdw">Nombre de usuario</p>
-                <button type="button" class="btn btn-success">Cambiar imagen</button>
+                <form action="{% url 'upload_pic' %}" method="post" enctype="multipart/form-data">{% csrf_token %}
+                    <p>
+                        <input id="id_image" type="file" class="btn btn-secondary" name="image">
+                    </p>
+                    <input type="submit" class="btn btn-success" value="Cambiar imagen"/>
+                </form>
             </div>
         </div>
 
@@ -311,5 +318,6 @@
                 </div>
             </div>
         </div>
+    </div>
     </div>
 {% endblock %}

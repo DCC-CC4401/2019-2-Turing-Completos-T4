@@ -1,10 +1,12 @@
-from django.contrib.auth import authenticate, login, logout
+from django.contrib import messages
+from django.contrib.auth import authenticate, get_user, login, logout
 from django.contrib.auth.decorators import login_required
-from django.urls import reverse
 from django.http import HttpResponseRedirect
-from django.shortcuts import render, render_to_response
+from django.shortcuts import render
+from django.urls import reverse
 
-from .forms import IniciarSesionForm, CambiarContrasena
+from .forms import IniciarSesionForm, ImageUploadForm, CambiarContrasena
+from .models import UserProfile
 
 
 def home(request):
@@ -18,7 +20,7 @@ def home(request):
                 login(request, user)
                 return HttpResponseRedirect('/landing_page/')
             else:
-                return render_to_response('LandingPageNotLogged.html', {'invalid': True, 'form': form})
+                return render(request, 'LandingPageNotLogged.html', {'invalid': True, 'form': form})
     else:
         form = IniciarSesionForm()
     return render(request, 'LandingPageNotLogged.html', {'form': form})
@@ -53,9 +55,29 @@ def change_password(request):
 
 def my_profile(request):
     change_password(request)
-    return render(request, 'UserProfile.html')
+    try:
+        img = 'media/' + UserProfile.objects.get(user=get_user(request)).image.url
+    except UserProfile.DoesNotExist:
+        img = 'Prototypes/img/default-user-image.png'
+    return render(request, 'UserProfile.html', context={'img': img})
 
 
 def my_logout(request):
     logout(request)
     return HttpResponseRedirect('/')
+
+
+def upload_pic(request):
+    if request.method == 'POST':
+        form = ImageUploadForm(request.POST, request.FILES)
+        if form.is_valid():
+            (m, created) = UserProfile.objects.get_or_create(user=get_user(request))
+            m.image = form.cleaned_data['image']
+            m.save()
+            messages.success(request, '¡Su foto de perfil ha sido cambiada con éxito!')
+            return HttpResponseRedirect(reverse('my_profile'))
+        messages.warning(
+            request,
+            'Su foto de perfil no cumple los requisitos o no indicó una foto nueva, por favor intente de nuevo'
+        )
+    return HttpResponseRedirect(reverse('my_profile'))
