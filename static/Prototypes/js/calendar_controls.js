@@ -1,14 +1,16 @@
 document.addEventListener('DOMContentLoaded', function () {
     let calendarEl = document.getElementById('calendar');
     let calendar = new FullCalendar.Calendar(calendarEl, {
+        // Formato del calendario
         plugins: ['timeGrid', 'bootstrap', 'dayGrid'],
         defaultView: 'timeGridWeek',
-        themeSystem: 'bootstrap',
         allDaySlot: false,
         nowIndicator: true,
         locale: 'es',
         header: false,
         firstDay: 1,
+        height: "parent",
+        scrollTime: "08:00:00",
         columnHeaderFormat: {weekday: 'long'},
         slotLabelFormat: {
             hour: '2-digit',

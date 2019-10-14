@@ -213,8 +213,7 @@ table {
 /* PARA LIMITAR EL ALTO DEL HORARIO */
 
 .scroll-horario {
-    height: 450px;
-    overflow-y: scroll;
+    height: 36em;
 }
 
 .table-head-sticky {
