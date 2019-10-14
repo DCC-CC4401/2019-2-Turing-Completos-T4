@@ -32,8 +32,7 @@ def landing_page(request):
         img = 'media/' + UserProfile.objects.get(user=get_user(request)).image.url
     except UserProfile.DoesNotExist:
         img = 'Prototypes/img/default-user-image.png'
-    (req, cont) = change_password(request, context={'img': img})
-    return render(request, 'LandingPage.html', cont)
+    return render(request, 'LandingPage.html', context={'img': img})
 
 
 @login_required
