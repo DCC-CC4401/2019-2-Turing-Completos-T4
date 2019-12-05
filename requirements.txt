@@ -1,4 +1,4 @@
-Django==2.2.6
+Django==2.2.8
 django-appconf==1.0.3
 django-avatar==4.1.0
 django-easy-avatar==0.1
