@@ -21,9 +21,9 @@ def get_filename(instance, filename):
 # User Profile Model
 class UserProfile(models.Model):
     image = models.ImageField(upload_to=get_filename)
-    user = models.ForeignKey(User, unique=True, on_delete=models.CASCADE)
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
     role = models.CharField(max_length=10, default='1')
-    name=models.CharField(max_length=25, default=' ')
+    name = models.CharField(max_length=25, default=' ')
     lastname = models.CharField(max_length=25, default=' ')
 
     def __str__(self):
@@ -45,7 +45,7 @@ class Actividades(models.Model):
     descripcion = models.TextField()
     categoria = models.CharField(max_length=20)
 
-    class metadata:
+    class Meta:
         ordering = ['correo1', 'categoria']
 
     def __str__(self):
@@ -58,7 +58,7 @@ class CreacionActividad(models.Model):
     inicio = models.DateTimeField()
     termino = models.DateTimeField()
 
-    class metadata:
+    class Meta:
         ordering = ['correo1', 'inicio']
 
     def __str__(self):

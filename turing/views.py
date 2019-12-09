@@ -1,10 +1,10 @@
 ﻿from django.contrib import messages
 from django.contrib.auth import authenticate, get_user, login, logout
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.urls import reverse
-from django.contrib.auth.models import User
 
 from .forms import IniciarSesionForm, ImageUploadForm, CambiarContrasena, NewUser
 from .models import UserProfile
@@ -39,7 +39,9 @@ def landing_page(request):
 
 
 @login_required
-def change_password(request, context={}):
+def change_password(request, context=None):
+    if context is None:
+        context = {}
     form = CambiarContrasena()
     if request.method == 'POST':
         form = CambiarContrasena(request.POST)
@@ -100,20 +102,19 @@ def create_user(request):
             name = form.cleaned_data['name']
             image = form.cleaned_data['image']
             lastname = form.cleaned_data['lastname']
-            email=form.cleaned_data['email']
+            email = form.cleaned_data['email']
             new_pass = form.cleaned_data['new_pass']
             if User.objects.filter(username=email).exists():
-                messages.error(request,'Correo asociado a otra cuenta, por favor ingrese otro correo.')
+                messages.error(request, 'Correo asociado a otra cuenta, por favor ingrese otro correo.')
                 return HttpResponseRedirect('/')
             else:
-                user=User(username=email,email=email)
+                user = User(username=email, email=email)
                 user.set_password(new_pass)
-                user.is_superuser=1
                 user.save()
-                userProfile = UserProfile(user=user, role=1, name=name, lastname=lastname)
-                userProfile.image=image
-                userProfile.save()
-                messages.success(request,'Cuenta creada exitosamente !')
+                user_profile = UserProfile(user=user, role=1, name=name, lastname=lastname)
+                user_profile.image = image
+                user_profile.save()
+                messages.success(request, 'Cuenta creada exitosamente !')
                 login(request, user)
                 return HttpResponseRedirect('/landing_page/')
     return HttpResponseRedirect('/')
