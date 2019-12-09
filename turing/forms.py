@@ -19,3 +19,16 @@ class CambiarContrasena(forms.Form):
 
 class ImageUploadForm(forms.Form):
     image = forms.ImageField()
+
+
+
+class NewUser(forms.Form):
+    name=forms.CharField(label='', widget=forms.TextInput(
+        attrs={'class':'rounded mx-1', 'size':'20em', 'placeholder':'Nombre'}))
+    lastname=forms.CharField(label='', widget=forms.TextInput(
+        attrs={'class':'rounded mx-1', 'size':'20em', 'placeholder':'Apellido'}))
+    email=forms.CharField(label='', widget=forms.TextInput(
+        attrs={'class':'rounded mx-1', 'size':'20em', 'placeholder':'Correo'}))
+    new_pass = forms.CharField(label='Contraseña nueva', widget=forms.PasswordInput(
+        attrs={'class': 'form_control', 'size': '20em', 'placeholder': "***********"}))
+    image = forms.ImageField(required=False)

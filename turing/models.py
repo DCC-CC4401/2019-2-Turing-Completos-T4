@@ -22,7 +22,9 @@ def get_filename(instance, filename):
 class UserProfile(models.Model):
     image = models.ImageField(upload_to=get_filename)
     user = models.ForeignKey(User, unique=True, on_delete=models.CASCADE)
-    role = models.CharField(max_length=10)
+    role = models.CharField(max_length=10, default='1')
+    name=models.CharField(max_length=25, default=' ')
+    lastname = models.CharField(max_length=25, default=' ')
 
     def __str__(self):
         return self.user.email

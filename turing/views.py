@@ -1,11 +1,12 @@
-from django.contrib import messages
+﻿from django.contrib import messages
 from django.contrib.auth import authenticate, get_user, login, logout
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.urls import reverse
+from django.contrib.auth.models import User
 
-from .forms import IniciarSesionForm, ImageUploadForm, CambiarContrasena
+from .forms import IniciarSesionForm, ImageUploadForm, CambiarContrasena, NewUser
 from .models import UserProfile
 
 
@@ -31,6 +32,8 @@ def landing_page(request):
     try:
         img = 'media/' + UserProfile.objects.get(user=get_user(request)).image.url
     except UserProfile.DoesNotExist:
+        img = 'Prototypes/img/default-user-image.png'
+    except ValueError:
         img = 'Prototypes/img/default-user-image.png'
     return render(request, 'LandingPage.html', context={'img': img})
 
@@ -63,6 +66,8 @@ def my_profile(request):
         img = 'media/' + UserProfile.objects.get(user=get_user(request)).image.url
     except UserProfile.DoesNotExist:
         img = 'Prototypes/img/default-user-image.png'
+    except ValueError:
+        img = 'Prototypes/img/default-user-image.png'
     (req, cont) = change_password(request, context={'img': img})
     return render(req, 'UserProfile.html', cont)
 
@@ -86,3 +91,29 @@ def upload_pic(request):
             'Su foto de perfil no cumple los requisitos o no indicó una foto nueva, por favor intente de nuevo'
         )
     return HttpResponseRedirect(reverse('my_profile'))
+
+
+def create_user(request):
+    if request.method == 'POST':
+        form = NewUser(request.POST, request.FILES)
+        if form.is_valid():
+            name = form.cleaned_data['name']
+            image = form.cleaned_data['image']
+            lastname = form.cleaned_data['lastname']
+            email=form.cleaned_data['email']
+            new_pass = form.cleaned_data['new_pass']
+            if User.objects.filter(username=email).exists():
+                messages.error(request,'Correo asociado a otra cuenta, por favor ingrese otro correo.')
+                return HttpResponseRedirect('/')
+            else:
+                user=User(username=email,email=email)
+                user.set_password(new_pass)
+                user.is_superuser=1
+                user.save()
+                userProfile = UserProfile(user=user, role=1, name=name, lastname=lastname)
+                userProfile.image=image
+                userProfile.save()
+                messages.success(request,'Cuenta creada exitosamente !')
+                login(request, user)
+                return HttpResponseRedirect('/landing_page/')
+    return HttpResponseRedirect('/')

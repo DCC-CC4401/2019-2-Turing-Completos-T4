@@ -15,6 +15,21 @@
 </head>
 
 <body class="bckg min-vh-100">
+
+{% if messages %}
+    {% for message in messages %}
+        <div class="row" style="position: fixed; width: 100%; z-index: 9999;">
+            <div class="alert {{ message.tags }} alert-dismissible fade show col-10 offset-1 mt-2 align-middle"
+                 role="alert"
+                 style="">
+                {{ message }}
+                <button type="button" class="close align-middle" data-dismiss="alert" aria-label="Close">
+                    <span class="align-middle" aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        </div>
+    {% endfor %}
+{% endif %}
 <!-- BOOTSTRAP JS, DO NOT DELETE -->
 <script
         src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
@@ -26,6 +41,7 @@
         integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
         crossorigin="anonymous"
 ></script>
+
 <script src="{% static 'Prototypes/js/bootstrap.min.js' %}"></script>
 
 <!--Barra de login-->
@@ -64,35 +80,25 @@
         <div class="col-8"></div>
 
         <div class="card col-3">
-            <form>
-                <div class="form-group text-right">
-                    <input type="text" name="name" placeholder="Nombre" class="form-control"/>
-                </div>
-                <div class="form-group">
-                    <input type="text" name="surname" placeholder="Apellido" class="form-control"/>
-                </div>
-                <div class="form-group">
-                    <input type="email" name="email" placeholder="Correo electrónico" class="form-control"/>
-                </div>
-                <div class="form-group">
-                    <input type="password" name="password" placeholder="Contraseña" class="form-control"/>
-                </div>
-                <div class="form-group">
-                    <input type="password" name="password2" placeholder="Confirme contraseña" class="form-control"/>
-                </div>
-                <div class="form-group text-black">
-                    <label>
-                        Seleccione imagen.
-                    </label>
-                    <input type="file" name="avatar" class="form-control-file">
-                </div>
+            <form action="{% url 'create_user' %}" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
 
-                <div class="row">
-                    <div class="col-7"></div>
-                    <div class="col-1">
-                        <button type="submit" class="btn btn-primary m-2 flex-row">Registrarse</button>
-                    </div>
-                </div>
+                <p class="form-group text-right">
+                    <input type="text" name="name" required="required" placeholder="Nombre" class="form-control"/>
+                <p>
+                <p class="form-group">
+                    <input type="text" name="lastname" required="required" placeholder="Apellido" class="form-control"/>
+                </p>
+                <p class="form-group">
+                    <input type="email" name="email" required="required" placeholder="Correo electrónico" class="form-control"/>
+                </p>
+                <p class="form-group">
+                    <input type="password" name="new_pass" required="required" placeholder="Contraseña" class="form-control"/>
+                </p>
+                <p class="form-group text-black">
+                    <input type="file" name="image" class="form-control-file">
+                </p>
+                <input type="submit" class="btn btn-primary m-2 flex-row" placeholder="Registrarse">
             </form>
         </div>
 
