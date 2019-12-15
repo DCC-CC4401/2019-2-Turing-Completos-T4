@@ -1,11 +1,12 @@
-from django.contrib import messages
+﻿from django.contrib import messages
 from django.contrib.auth import authenticate, get_user, login, logout
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.urls import reverse
 
-from .forms import IniciarSesionForm, ImageUploadForm, CambiarContrasena
+from .forms import IniciarSesionForm, ImageUploadForm, CambiarContrasena, NewUser
 from .models import UserProfile
 
 
@@ -29,14 +30,20 @@ def home(request):
 @login_required
 def landing_page(request):
     try:
+        name = UserProfile.objects.get(user=get_user(request)).name
+        lastname = UserProfile.objects.get(user=get_user(request)).lastname
         img = 'media/' + UserProfile.objects.get(user=get_user(request)).image.url
     except UserProfile.DoesNotExist:
         img = 'Prototypes/img/default-user-image.png'
-    return render(request, 'LandingPage.html', context={'img': img})
+    except ValueError:
+        img = 'Prototypes/img/default-user-image.png'
+    return render(request, 'LandingPage.html', context={'img': img, 'name': name, 'lastname': lastname})
 
 
 @login_required
-def change_password(request, context={}):
+def change_password(request, context=None):
+    if context is None:
+        context = {}
     form = CambiarContrasena()
     if request.method == 'POST':
         form = CambiarContrasena(request.POST)
@@ -60,10 +67,15 @@ def change_password(request, context={}):
 
 def my_profile(request):
     try:
+        name = UserProfile.objects.get(user=get_user(request)).name
+        lastname = UserProfile.objects.get(user=get_user(request)).lastname
+        email = UserProfile.objects.get(user=get_user(request)).user
         img = 'media/' + UserProfile.objects.get(user=get_user(request)).image.url
     except UserProfile.DoesNotExist:
         img = 'Prototypes/img/default-user-image.png'
-    (req, cont) = change_password(request, context={'img': img})
+    except ValueError:
+        img = 'Prototypes/img/default-user-image.png'
+    (req, cont) = change_password(request, context={'img': img, 'name': name, 'lastname': lastname, 'email': email})
     return render(req, 'UserProfile.html', cont)
 
 
@@ -86,3 +98,28 @@ def upload_pic(request):
             'Su foto de perfil no cumple los requisitos o no indicó una foto nueva, por favor intente de nuevo'
         )
     return HttpResponseRedirect(reverse('my_profile'))
+
+
+def create_user(request):
+    if request.method == 'POST':
+        form = NewUser(request.POST, request.FILES)
+        if form.is_valid():
+            name = form.cleaned_data['name']
+            image = form.cleaned_data['image']
+            lastname = form.cleaned_data['lastname']
+            email = form.cleaned_data['email']
+            new_pass = form.cleaned_data['new_pass']
+            if User.objects.filter(username=email).exists():
+                messages.error(request, 'Correo asociado a otra cuenta, por favor ingrese otro correo.')
+                return HttpResponseRedirect('/')
+            else:
+                user = User(username=email, email=email)
+                user.set_password(new_pass)
+                user.save()
+                user_profile = UserProfile(user=user, role=1, name=name, lastname=lastname)
+                user_profile.image = image
+                user_profile.save()
+                messages.success(request, 'Cuenta creada exitosamente !')
+                login(request, user)
+                return HttpResponseRedirect('/landing_page/')
+    return HttpResponseRedirect('/')
