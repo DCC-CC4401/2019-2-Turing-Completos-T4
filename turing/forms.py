@@ -10,11 +10,11 @@ class IniciarSesionForm(forms.Form):
 
 class CambiarContrasena(forms.Form):
     old_pass = forms.CharField(label='Contraseña actual', widget=forms.PasswordInput(
-        attrs={'class': 'form_control', 'size': '30em', 'placeholder': "***********"}))
+        attrs={'class': 'form_control w-100', 'size': '30em', 'placeholder': "***********"}))
     new_pass = forms.CharField(label='Contraseña nueva', widget=forms.PasswordInput(
-        attrs={'class': 'form_control', 'size': '30em', 'placeholder': "***********"}))
+        attrs={'class': 'form_control w-100', 'size': '30em', 'placeholder': "***********"}))
     confirm_pass = forms.CharField(label='Confirmar contraseña', widget=forms.PasswordInput(
-        attrs={'class': 'form_control', 'size': '30em', 'placeholder': "***********"}))
+        attrs={'class': 'form_control w-100', 'size': '30em', 'placeholder': "***********"}))
 
 
 class ImageUploadForm(forms.Form):

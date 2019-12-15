@@ -3,7 +3,7 @@
 {% block content %}
 
     <!--CONTENIDO PAGINA-->
-    <div class="container-fluid p-4 main bckg min-vh-100">
+    <div class="container-fluid p-4 main area min-vh-100">
 
         <div class="row">
             <img src="{% static img %}" class="circular mx-auto d-block shadow"
@@ -61,7 +61,7 @@
                             <div class="form-group">
                                 <label for="disabledTextInput">Nombre:</label>
                                 <input type="text" id="disabledTextInputNombre" class="form-control"
-                                       placeholder="Nombre usuario">
+                                       placeholder={{name}}>
                             </div>
                         </fieldset>
 
@@ -70,7 +70,7 @@
                             <div class="form-group">
                                 <label for="disabledTextInput">Apellidos:</label>
                                 <input type="text" id="disabledTextInputApellidos" class="form-control"
-                                       placeholder="Apellidos usuario">
+                                       placeholder="{{lastname}}">
                             </div>
                         </fieldset>
 
@@ -79,7 +79,7 @@
                             <div class="form-group">
                                 <label for="disabledTextInput">Correo electronico:</label>
                                 <input type="text" id="disabledTextInput" class="form-control"
-                                       placeholder="correo@usuario.com">
+                                       placeholder="{{email}}">
                             </div>
                         </fieldset>
 
@@ -91,7 +91,7 @@
                      aria-labelledby="Seguridad-tab">
                     <form method="post">
                         {% csrf_token %}
-                        {{ form }}
+                        {{ form.as_table }}
                         <!--Contraseña actual-->
                         <!--
                                                 <div class="form-group">

@@ -31,11 +31,13 @@ def home(request):
 def landing_page(request):
     try:
         img = 'media/' + UserProfile.objects.get(user=get_user(request)).image.url
+        name = UserProfile.objects.get(user=get_user(request)).name
+        lastname = UserProfile.objects.get(user=get_user(request)).lastname
     except UserProfile.DoesNotExist:
         img = 'Prototypes/img/default-user-image.png'
     except ValueError:
         img = 'Prototypes/img/default-user-image.png'
-    return render(request, 'LandingPage.html', context={'img': img})
+    return render(request, 'LandingPage.html', context={'img': img, 'name': name, 'lastname': lastname})
 
 
 @login_required
@@ -66,11 +68,14 @@ def change_password(request, context=None):
 def my_profile(request):
     try:
         img = 'media/' + UserProfile.objects.get(user=get_user(request)).image.url
+        name = UserProfile.objects.get(user=get_user(request)).name
+        lastname = UserProfile.objects.get(user=get_user(request)).lastname
+        email = UserProfile.objects.get(user=get_user(request)).user
     except UserProfile.DoesNotExist:
         img = 'Prototypes/img/default-user-image.png'
     except ValueError:
         img = 'Prototypes/img/default-user-image.png'
-    (req, cont) = change_password(request, context={'img': img})
+    (req, cont) = change_password(request, context={'img': img, 'name': name, 'lastname': lastname, 'email': email})
     return render(req, 'UserProfile.html', cont)
 
 
