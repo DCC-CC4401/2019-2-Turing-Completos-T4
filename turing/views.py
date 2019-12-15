@@ -67,10 +67,10 @@ def change_password(request, context=None):
 
 def my_profile(request):
     try:
-        img = 'media/' + UserProfile.objects.get(user=get_user(request)).image.url
         name = UserProfile.objects.get(user=get_user(request)).name
         lastname = UserProfile.objects.get(user=get_user(request)).lastname
         email = UserProfile.objects.get(user=get_user(request)).user
+        img = 'media/' + UserProfile.objects.get(user=get_user(request)).image.url
     except UserProfile.DoesNotExist:
         img = 'Prototypes/img/default-user-image.png'
     except ValueError:
