@@ -15,18 +15,18 @@
 </head>
 
 <body class="bckg min-vh-100 area">
-        <ul class="circles">
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-        </ul>
+<ul class="circles">
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+</ul>
 
 {% if messages %}
     {% for message in messages %}
@@ -78,46 +78,45 @@
         </div>
     </div>
     <!--Información de la página-->
-    <div class="container-fluid text-left p-4">
-        <div class="col-6 p-2 mx-2 rounded shadow table-success">
-            Había una vez un percebe feo.
-            <br/>Era tan feo que todos se murieron. <br/>Fin.
-        </div>
-    </div>
-    <!--Registro de usuario-->
-    <div class="container-fluid text-right col-md-11 ml-3 text-white">
-        <h3>¿No tienes cuenta? ¡Regístrate!</h3>
-    </div>
     <div class="row">
-        <div class="col-8"></div>
-
-        <div class="card col-3">
-            <form action="{% url 'create_user' %}" method="post" enctype="multipart/form-data">
-                {% csrf_token %}
-                <p class="form-group text-right">
-                    <input type="text" name="name" required="required" placeholder="Nombre" class="form-control"/>
-                <p>
-                <p class="form-group">
-                    <input type="text" name="lastname" required="required" placeholder="Apellido" class="form-control"/>
-                </p>
-                <p class="form-group">
-                    <input type="email" name="email" required="required" placeholder="Correo electrónico"
-                           class="form-control"/>
-                </p>
-                <p class="form-group">
-                    <input type="password" name="new_pass" required="required" placeholder="Contraseña"
-                           class="form-control"/>
-                </p>
-                <p class="form-group text-left text-black">
-                    <span style="color: #888888; font-size: 0.8125rem;">Imagen de Perfil</span>
-                    <input type="file" name="image" class="form-control-file">
-                </p>
-                <button type="submit" class="btn btn-primary m-2 flex-row">Registrarse</button>
-            </form>
+        <div class="container-fluid col-6 p-2 mt-5 text-white">
+            <h1>
+                Something something.<br>
+                Objetivo del negocio.<br>
+                Qué datos recolectamos.<br>
+                Cómo analizamos los datos.
+            </h1>
         </div>
-
+        <!--Registro de usuario-->
+        <div class="col-6 mt-5 pl-5 text-white">
+            <h3>¿No tienes cuenta? ¡Regístrate!</h3>
+            <div class="card px-5 py-2 mx-auto w-75">
+                <form action="{% url 'create_user' %}" method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <p class="form-group text-right">
+                        <input type="text" name="name" required="required" placeholder="Nombre" class="form-control"/>
+                    <p>
+                    <p class="form-group">
+                        <input type="text" name="lastname" required="required" placeholder="Apellido"
+                               class="form-control"/>
+                    </p>
+                    <p class="form-group">
+                        <input type="email" name="email" required="required" placeholder="Correo electrónico"
+                               class="form-control"/>
+                    </p>
+                    <p class="form-group">
+                        <input type="password" name="new_pass" required="required" placeholder="Contraseña"
+                               class="form-control"/>
+                    </p>
+                    <p class="form-group text-left text-black">
+                        <span style="color: #888888; font-size: 0.8125rem;">Imagen de Perfil</span>
+                        <input type="file" name="image" class="form-control-file">
+                    </p>
+                    <button type="submit" class="btn btn-primary m-2 flex-row">Registrarse</button>
+                </form>
+            </div>
+        </div>
     </div>
-</div>
 
 
 </body>
